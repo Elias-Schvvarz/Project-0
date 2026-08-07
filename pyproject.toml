@@ -7,7 +7,9 @@ authors = [
     { name = "elias", email = "eliaschvvarz@gmail.com" }
 ]
 requires-python = ">=3.14"
-dependencies = []
+dependencies = [
+    "more-itertools>=11.1.0",
+]
 
 [project.scripts]
 project-0 = "project_0:main"
