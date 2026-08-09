@@ -1,1 +1,1 @@
-print('Hello from Project-0!')
+print("Hello from Project-0!")
