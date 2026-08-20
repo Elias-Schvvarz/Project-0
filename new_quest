@@ -1,0 +1,12 @@
+def update_inventory(the_list, key, items):
+    if key in the_list:
+        the_list[key] += items
+    else:
+        the_list[key] = items
+
+
+def get_stock(the_list, key):
+    if key in the_list:
+        return the_list[key]
+    else:
+        return 0
