@@ -12,3 +12,8 @@ def find_index_of_nearest(number, the_list):
             best_index = i
 
     return best_index
+
+
+def filter_anagrams(target, candidates):
+    target_sorted = sorted(target)
+    return [item for item in candidates if sorted(item) == target_sorted]
