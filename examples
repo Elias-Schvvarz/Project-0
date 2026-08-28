@@ -1,0 +1,14 @@
+def find_index_of_nearest(number, the_list):
+    if not the_list:
+        return None
+
+    best_index = 0
+    min_differ = abs(the_list[0] - number)
+
+    for i, num in enumerate(the_list):
+        current_diff = abs(num - number)
+        if current_diff < min_differ:
+            min_differ = current_diff
+            best_index = i
+
+    return best_index
