@@ -17,3 +17,23 @@ def find_index_of_nearest(number, the_list):
 def filter_anagrams(target, candidates):
     target_sorted = sorted(target)
     return [item for item in candidates if sorted(item) == target_sorted]
+
+
+
+
+from collections import Counter
+
+
+def histo(rounds_count, roll_die):
+    rolls = [roll_die() for _ in range(rounds_count)]
+    counts = Counter(rolls)
+    lines = []
+    for side in range(1, 7):
+        amount = counts[side]
+        if amount > 0:
+            bars = '#' * amount
+            lines.append(f'{side}|{bars} {amount}')
+        else:
+            lines.append(f'{side}|')
+
+    return '\n'.join(lines)
