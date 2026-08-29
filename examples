@@ -37,3 +37,19 @@ def histo(rounds_count, roll_die):
             lines.append(f'{side}|')
 
     return '\n'.join(lines)
+
+
+
+curry = lambda f: lambda x: lambda y: f(x, y)  # noqa: E731
+compose = lambda f: lambda g: lambda x: f(g(x))  # noqa: E731
+pair = lambda x: [x, x]  # noqa: E731
+dup = lambda x: x + x  # noqa: E731
+
+from functools import reduce
+from operator import add
+
+cmap = curry(map)
+duplicate_chars = compose(''.join)(cmap(dup))
+enlarge_horizontally = cmap(duplicate_chars)
+enlarge_vertically = compose(curry(reduce)(add))(cmap(pair))
+enlarge = compose(enlarge_vertically)(enlarge_horizontally)
