@@ -64,3 +64,16 @@ def get_men_counted_by_year(the_list):
     year_list = list(map(lambda men: datetime.fromisoformat(men['birthday']).year, only_men))
     men_by_year = Counter(year_list)
     return men_by_year
+
+
+
+def rgb2hex(r=0, g=0, b=0):
+    return f'#{r:02x}{g:02x}{b:02x}'
+
+def hex2rgb(hex_str):
+    clean_hex = hex_str.lstrip('#')
+    return {
+        'r': int(clean_hex[0:2], 16),
+        'g': int(clean_hex[2:4], 16),
+        'b': int(clean_hex[4:6], 16),
+    }
