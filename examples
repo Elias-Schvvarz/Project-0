@@ -53,3 +53,14 @@ duplicate_chars = compose(''.join)(cmap(dup))
 enlarge_horizontally = cmap(duplicate_chars)
 enlarge_vertically = compose(curry(reduce)(add))(cmap(pair))
 enlarge = compose(enlarge_vertically)(enlarge_horizontally)
+
+
+
+from datetime import datetime
+from collections import Counter
+
+def get_men_counted_by_year(the_list):
+    only_men = list(filter(lambda user: user['gender'] == 'male', the_list))
+    year_list = list(map(lambda men: datetime.fromisoformat(men['birthday']).year, only_men))
+    men_by_year = Counter(year_list)
+    return men_by_year
