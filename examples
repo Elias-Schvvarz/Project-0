@@ -77,3 +77,13 @@ def hex2rgb(hex_str):
         'g': int(clean_hex[2:4], 16),
         'b': int(clean_hex[4:6], 16),
     }
+
+
+
+def compose(func_1, func_2):
+    def inner(x):
+        return func_1(func_2(x))
+    return inner
+
+
+
