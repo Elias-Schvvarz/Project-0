@@ -93,3 +93,32 @@ def same_parity_filter(the_list):
 
     firts_parity = the_list[0] % 2
     return list(filter(lambda x: x % 2 == firts_parity, the_list))
+
+
+
+HEXDIGITS = set(hexdigits)
+
+def is_valid_ipv6(ip):
+
+    if ip.count('::') > 1:
+        return False
+    
+    if '::' in ip:
+        left, right = ip.split('::')
+        left_parts = left.split(':') if left else []
+        right_parts = right.split(':') if right else []
+
+        missing_zeros = 8 - (len(right_parts) + len(left_parts))
+        if missing_zeros < 1:
+            return False
+        groups = left_parts + ['0'] * missing_zeros + right_parts
+    else:
+        groups = ip.split(':')
+
+    if len(groups) != 8:
+        return False
+    
+    return all(
+        1 <= len(group) <= 4 and all(c in HEXDIGITS for c in group)
+        for group in groups
+    )
