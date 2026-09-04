@@ -84,16 +84,3 @@ def compose(func_1, func_2):
     def inner(x):
         return func_1(func_2(x))
     return inner
-
-
-
-def same_parity_filter(the_list):
-    if not the_list:
-        return []
-
-    firts_parity = the_list[0] % 2
-    return list(filter(lambda x: x % 2 == firts_parity, the_list))
-
-
-
-
