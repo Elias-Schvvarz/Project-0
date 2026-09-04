@@ -79,8 +79,3 @@ def hex2rgb(hex_str):
     }
 
 
-
-def compose(func_1, func_2):
-    def inner(x):
-        return func_1(func_2(x))
-    return inner
