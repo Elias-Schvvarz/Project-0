@@ -70,12 +70,3 @@ def get_men_counted_by_year(the_list):
 def rgb2hex(r=0, g=0, b=0):
     return f'#{r:02x}{g:02x}{b:02x}'
 
-def hex2rgb(hex_str):
-    clean_hex = hex_str.lstrip('#')
-    return {
-        'r': int(clean_hex[0:2], 16),
-        'g': int(clean_hex[2:4], 16),
-        'b': int(clean_hex[4:6], 16),
-    }
-
-
