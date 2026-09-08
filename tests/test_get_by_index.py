@@ -1,11 +1,15 @@
 from get_by_index import get_by_index
-from random import choice, randint
+import random
 import string
 
 characters = string.ascii_letters + string.digits + '@!=*'
 
-lenght = randint(0, 70)
+length = random.randint(0, 70)
 
-the_elements = []
+the_elements = "".join(random.choices(characters, k=length))
 
-if get_by_index(the_elements)
+the_index = random.randint(0, 100)
+
+the_default = 'stop'
+
+if get_by_index(the_elements, the_index, the_default)
