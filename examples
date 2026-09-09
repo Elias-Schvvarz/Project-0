@@ -64,3 +64,16 @@ def get_men_counted_by_year(the_list):
     year_list = list(map(lambda men: datetime.fromisoformat(men['birthday']).year, only_men))
     men_by_year = Counter(year_list)
     return men_by_year
+
+
+
+from functions import get_function
+
+get = get_function()
+
+if get({'hello': 'world'}, 'hello') != 'world':
+    raise Exception('Функция работает неверно!')
+if get({}, 'hello', 'kitty') != 'kitty':
+    raise Exception('Функция работает неверно!')
+if get({'hello': 'world'}, 'hello', 'kitty') != 'world':
+    raise Exception('Функция работает неверно!')
