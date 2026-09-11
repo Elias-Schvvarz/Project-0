@@ -77,3 +77,37 @@ if get({}, 'hello', 'kitty') != 'kitty':
     raise Exception('Функция работает неверно!')
 if get({'hello': 'world'}, 'hello', 'kitty') != 'world':
     raise Exception('Функция работает неверно!')
+
+
+
+from cart import make_cart
+
+
+# BEGIN (write your solution here)
+def test_cart():
+    cart = make_cart()
+
+    assert len(cart.get_items()) == 0
+    assert cart.get_cost() == 0
+    assert cart.get_count() == 0
+
+    cow = {'name': 'cow', 'price': 5}
+    cart.add_item(cow, 3)
+
+    assert cart.get_items() == [{'good': cow, 'count': 3}]
+    assert cart.get_cost() == 15
+    assert cart.get_count() == 3
+
+    horse = {'name': 'horse', 'price': 4}
+    cart.add_item(horse, 4)
+
+    assert cart.get_items() == [{'good': cow, 'count': 3}, {'good': horse, 'count': 4}]
+    assert cart.get_cost() == 15 + 16
+    assert cart.get_count() == 7
+
+    cow = {'name': 'cow', 'price': 5}
+    cart.add_item(cow, 4)
+
+    assert cart.get_items() == [{'good': cow, 'count': 3}, {'good': horse, 'count': 4}, {'good': cow, 'count': 4}]
+    assert cart.get_cost() == 15 + 16 + 20
+    assert cart.get_count() == 11
