@@ -111,3 +111,29 @@ def test_cart():
     assert cart.get_items() == [{'good': cow, 'count': 3}, {'good': horse, 'count': 4}, {'good': cow, 'count': 4}]
     assert cart.get_cost() == 15 + 16 + 20
     assert cart.get_count() == 11
+
+
+
+def invert_case(string):
+    # BEGIN (write your solution here)
+    '''
+    >>> invert_case('Hello, World!')
+    'hELLO, wORLD!'
+    >>> invert_case('')
+    ''
+    >>> invert_case('123')
+    '123'
+    '''
+    # END
+
+    result = ''
+    for char in string:
+        result += char.swapcase()
+    return result
+
+
+if __name__ == "__main__":
+    import doctest
+    failed, attempted = doctest.testmod()
+    assert failed == 0
+    assert attempted == 3
