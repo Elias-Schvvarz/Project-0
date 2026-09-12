@@ -137,3 +137,21 @@ if __name__ == "__main__":
     failed, attempted = doctest.testmod()
     assert failed == 0
     assert attempted == 3
+
+
+
+def test_fill(collection, fill):
+    fill(collection, '*', 1, 3)
+    assert collection == [1, '*', '*', 4]
+
+def test_fill_2(collection, fill):
+    fill(collection, '*')
+    assert collection == ['*', '*', '*', '*']
+
+def test_fill_3(collection, fill):
+    fill(collection, '*', 4)
+    assert collection == [1, 2, 3, 4]
+
+def test_fill_4(collection, fill):
+    fill(collection, '*', 0, 10)
+    assert collection == ['*', '*', '*', '*']
