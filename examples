@@ -155,3 +155,12 @@ def test_fill_3(collection, fill):
 def test_fill_4(collection, fill):
     fill(collection, '*', 0, 10)
     assert collection == ['*', '*', '*', '*']
+
+
+
+def fill(coll, symb, start=0, fin=None):
+    if fin is None or fin > len(coll):
+        fin = len(coll)
+    for i in range(start, fin):
+        coll[i] = symb
+    return coll
