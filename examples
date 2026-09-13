@@ -164,3 +164,15 @@ def fill(coll, symb, start=0, fin=None):
     for i in range(start, fin):
         coll[i] = symb
     return coll
+
+
+
+def calculate_distance(point_1, point_2):
+    a, b = point_1
+    c, d = point_2
+    #√((x₂−x₁)²+(y₂−y₁)²)
+    dif_1 = a - c
+    dif_2 = b - d
+    total_sum = (dif_1 ** 2) + (dif_2 ** 2)
+    result = total_sum ** 0.5
+    return result 
