@@ -177,10 +177,3 @@ def calculate_distance(point_1, point_2):
     result = total_sum ** 0.5
     return result 
 
-
-
-def get_mid_point(point_1, point_2):
-    #x = (x1 + x2) / 2 и y = (y1 + y2) / 2
-    x = ((point_1['x'] + point_2['x']) / 2)
-    y = ((point_1['y'] + point_2['y']) / 2)
-    return {'x': x, 'y': y}
