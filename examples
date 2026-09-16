@@ -177,3 +177,26 @@ def calculate_distance(point_1, point_2):
     result = total_sum ** 0.5
     return result 
 
+
+
+from points import get_x, get_y, make_decart_point
+
+
+# BEGIN (write your solution here)
+def make_segment(point_1, point_2):
+    return {'begin': point_1, 'end': point_2}
+
+def get_begin_point(segment):
+    return segment['begin']
+
+def get_end_point(segment):
+    return segment['end']
+
+def get_mid_point_of_segment(segment):
+    begin = get_begin_point(segment)
+    end = get_end_point(segment)
+
+    x = ((get_x(begin) + get_x(end)) / 2)
+    y = ((get_y(begin) + get_y(end)) / 2)
+
+    return make_decart_point(x, y)
