@@ -158,15 +158,6 @@ def test_fill_4(collection, fill):
 
 
 
-def fill(coll, symb, start=0, fin=None):
-    if fin is None or fin > len(coll):
-        fin = len(coll)
-    for i in range(start, fin):
-        coll[i] = symb
-    return coll
-
-
-
 def calculate_distance(point_1, point_2):
     a, b = point_1
     c, d = point_2
