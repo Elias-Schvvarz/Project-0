@@ -208,3 +208,53 @@ def get_x(point):
 
 def get_y(point):
     return round(point["radius"] * math.sin(point["angle"]))
+
+
+
+from points import get_quadrant, get_x, get_y, make_decart_point
+
+# BEGIN (write your solution here)
+def make_rectangle(start_point, width, height):
+    return {
+        'start_point': start_point,
+        'width': width,
+        'height': height,
+    }
+
+
+def get_start_point(rectangle):
+    return rectangle['start_point']
+
+
+def get_width(rectangle):
+    return rectangle['width']
+
+
+def get_height(rectangle):
+    return rectangle['height']
+
+
+def contains_origin(rectangle):
+    start = get_start_point(rectangle)
+    width = get_width(rectangle)
+    height = get_height(rectangle)
+
+    x1 = get_x(start)
+    y1 = get_y(start)
+
+    # Вычисляем все 4 вершины прямоугольника
+    top_left = start
+    top_right = make_decart_point(x1 + width, y1)
+    bottom_left = make_decart_point(x1, y1 - height)
+    bottom_right = make_decart_point(x1 + width, y1 - height)
+
+    # Извлекаем квадранты для каждой вершины
+    q1 = get_quadrant(top_left)
+    q2 = get_quadrant(top_right)
+    q3 = get_quadrant(bottom_left)
+    q4 = get_quadrant(bottom_right)
+
+    # Начало координат внутри, только если вершины в 4 разных квадрантах
+    quadrants = {q1, q2, q3, q4}
+    return len(quadrants) == 4 and None not in quadrants
+# END
