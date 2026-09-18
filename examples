@@ -191,3 +191,20 @@ def get_mid_point_of_segment(segment):
     y = ((get_y(begin) + get_y(end)) / 2)
 
     return make_decart_point(x, y)
+
+
+
+import math
+
+def make_point(x, y):
+    return {
+        "angle": math.atan2(y, x),
+        "radius": math.sqrt((x ** 2) + (y ** 2)),
+    }
+
+def get_x(point):
+    return round(point["radius"] * math.cos(point["angle"]))
+
+
+def get_y(point):
+    return round(point["radius"] * math.sin(point["angle"]))
