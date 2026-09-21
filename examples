@@ -92,24 +92,6 @@ def test_cart():
 
 
 
-def invert_case(string):
-    # BEGIN (write your solution here)
-    '''
-    >>> invert_case('Hello, World!')
-    'hELLO, wORLD!'
-    >>> invert_case('')
-    ''
-    >>> invert_case('123')
-    '123'
-    '''
-    # END
-
-    result = ''
-    for char in string:
-        result += char.swapcase()
-    return result
-
-
 if __name__ == "__main__":
     import doctest
     failed, attempted = doctest.testmod()
