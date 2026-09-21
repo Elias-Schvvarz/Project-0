@@ -218,3 +218,45 @@ def contains_origin(rectangle):
     quadrants = {q1, q2, q3, q4}
     return len(quadrants) == 4 and None not in quadrants
 # END
+
+
+
+import math
+
+def make(input_numer, input_denom):
+    gcd = math.gcd(input_numer, input_denom)
+    return {
+        "numer": int(input_numer // gcd),
+        "denum": int(input_denom // gcd),
+    }
+
+def get_numer(rational):
+    return rational["numer"]
+
+def get_denom(rational):
+    return rational["denum"]
+
+def add(rational_1, rational_2):
+    numer_1 = get_numer(rational_1)
+    numer_2 = get_numer(rational_2)
+    denom_1 = get_denom(rational_1)
+    denom_2 = get_denom(rational_2)
+
+    new_numer = numer_1 * denom_2 + numer_2 * denom_1
+    new_denum = denom_1 * denom_2
+
+    return make(new_numer, new_denum)
+
+def sub(rational_1, rational_2):
+    numer_1 = get_numer(rational_1)
+    numer_2 = get_numer(rational_2)
+    denom_1 = get_denom(rational_1)
+    denom_2 = get_denom(rational_2)
+
+    new_numer = numer_1 * denom_2 - numer_2 * denom_1
+    new_denom = denom_1 * denom_2
+
+    return make(new_numer, new_denom)
+
+def to_str(rat):
+    return f"{get_numer(rat)}/{get_denom(rat)}"
