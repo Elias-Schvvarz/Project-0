@@ -260,3 +260,14 @@ def sub(rational_1, rational_2):
 
 def to_str(rat):
     return f"{get_numer(rat)}/{get_denom(rat)}"
+
+
+
+def sequence_sum(begin, end):
+    if begin > end:
+        return None
+
+    if begin == end:
+        return begin
+
+    return begin + sequence_sum(begin + 1, end)
