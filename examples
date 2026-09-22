@@ -271,3 +271,16 @@ def sequence_sum(begin, end):
         return begin
 
     return begin + sequence_sum(begin + 1, end)
+
+
+
+def smallest_divisor(number):
+    if number == 1:
+        return 1
+    
+    def inner(acc):
+        if number % acc == 0:
+            return acc
+        return inner(acc + 1)
+
+    return inner(2)
