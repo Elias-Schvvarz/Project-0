@@ -284,3 +284,12 @@ def smallest_divisor(number):
         return inner(acc + 1)
 
     return inner(2)
+
+
+
+def remove_first_level(tree):
+    result = []
+    for item in tree:
+        if isinstance(item, list):
+            result.extend(item)
+    return result
