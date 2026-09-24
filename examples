@@ -332,3 +332,22 @@ def generate():
         ],
         {'hidden': True},
     )
+
+
+
+def compress_images(tree):
+    children = get_children(tree)
+
+    def compress_node(node):
+        name = get_name(node)
+        if is_file(node) and name.endswith(".jpg"):
+            new_meta = copy.deepcopy(get_meta(node))
+            if "size" in new_meta:
+                new_meta["size"] //= 2
+            return mkfile(name, new_meta)
+        return copy.deepcopy(node)
+
+    new_children = [compress_node(child) for child in children]
+    new_meta = copy.deepcopy(get_meta(tree))
+
+    return mkdir(get_name(tree), new_children, new_meta)
