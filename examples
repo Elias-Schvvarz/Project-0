@@ -375,3 +375,18 @@ def get_hidden_files_count(node):
     children = get_children(node)
     descendant_counts = list(map(get_hidden_files_count, children))
     return sum(descendant_counts)
+
+
+
+def calculate_size(node):
+    if is_file(node):
+        meta = get_meta(node)
+        return meta.get('size', 0)
+
+    children = get_children(node)
+    return sum(map(calculate_size, children))
+
+def du(tree):
+    children = get_children(tree)
+    result = [(get_name(child), calculate_size(child)) for child in children]
+    return sorted(result, key=lambda item: item[1], reverse=True)
