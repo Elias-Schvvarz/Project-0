@@ -366,3 +366,12 @@ def downcase_file_names(node):
 
     return mkdir(name, new_children, new_meta)
 
+
+
+def get_hidden_files_count(node):
+    if is_file(node):
+        name = get_name(node)
+        return 1 if name.startswith('.') else 0
+    children = get_children(node)
+    descendant_counts = list(map(get_hidden_files_count, children))
+    return sum(descendant_counts)
