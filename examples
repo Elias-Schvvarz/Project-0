@@ -390,3 +390,21 @@ def du(tree):
     children = get_children(tree)
     result = [(get_name(child), calculate_size(child)) for child in children]
     return sorted(result, key=lambda item: item[1], reverse=True)
+
+
+
+def find_files_by_name(tree, substr):
+    def walk(node, ancestry):
+        name = get_name(node)
+        
+        if is_file(node):
+            if substr in name:
+                return [os.path.join(ancestry, name)]
+            return []
+
+        new_ancestry = os.path.join(ancestry, name)
+        children = get_children(node)
+        output = [walk(child, new_ancestry) for child in children]
+
+        return flatten(output)
+    return walk(tree, '')
