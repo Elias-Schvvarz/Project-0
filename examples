@@ -424,3 +424,31 @@ class Color:
 import registry
 registry.add(Cat)
 registry.add(Bird)
+
+
+
+class RGB:
+    red = 0
+    green = 0
+    blue = 0
+
+
+red = RGB()
+red.red = 255
+
+green = RGB()
+green.green = 255
+
+blue = RGB()
+blue.blue = 255
+
+
+
+class Counter:
+    value = 0
+
+    def inc(self, numb=1):
+        self.value = self.value + numb
+
+    def dec(self, numb=1):
+        self.value = self.value - numb
