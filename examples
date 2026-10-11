@@ -432,3 +432,51 @@ class HourClock:
     @hours.setter
     def hours(self, value):
         self._hours = value % 12
+
+
+
+class LimitedCounter(Counter):
+
+    def __init__(self, limit):
+        super().__init__()
+        self.limit = limit
+
+    def inc(self, amount=1):
+        super().inc(amount)
+        self.value = min(self.value, self.limit)
+
+
+
+class AppError(Exception):
+    pass
+
+
+class ValidationError(AppError):
+    def __init__(self, field, message):
+        self.field = field
+        super().__init__(f"{field}: {message}")
+
+
+class RequiredFieldError(ValidationError):
+    def __init__(self, field):
+        super().__init__(field, "is required")
+
+
+class InvalidTypeError(ValidationError):
+    def __init__(self, field, expected, got):
+        self.expected = expected
+        self.got = got
+        message = f"expected {expected.__name__}, got {got.__name__}"
+        super().__init__(field, message)
+
+
+def validate(data, schema):
+    for field, expected_type in schema.items():
+        if field not in data:
+            raise RequiredFieldError(field)
+        
+        value = data[field]
+        if type(value) is not expected_type:
+            raise InvalidTypeError(field, expected_type, type(value))
+            
+    return True
