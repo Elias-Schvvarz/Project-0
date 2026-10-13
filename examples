@@ -114,19 +114,7 @@ def test_fill_3(collection, fill):
 
 def test_fill_4(collection, fill):
     fill(collection, '*', 0, 10)
-    assert collection == ['*', '*', '*', '*']
-
-
-
-def calculate_distance(point_1, point_2):
-    a, b = point_1
-    c, d = point_2
-    #√((x₂−x₁)²+(y₂−y₁)²)
-    dif_1 = a - c
-    dif_2 = b - d
-    total_sum = (dif_1 ** 2) + (dif_2 ** 2)
-    result = total_sum ** 0.5
-    return result 
+    assert collection == ['*', '*', '*', '*'] 
 
 
 
