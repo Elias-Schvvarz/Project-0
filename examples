@@ -471,14 +471,6 @@ def validate(data, schema):
 
 
 
-def to_Klass(the_data):
-    obj = Klass()
-    for key, value in the_data.items():
-        setattr(obj, key, value)
-    return obj
-
-
-
 class PasswordValidator():
     OPTIONS = {
         'min_len': 8,
