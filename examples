@@ -490,3 +490,23 @@ class PasswordValidator():
 
     def _has_number(self, password):
         return any(char.isdigit() for char in password)
+
+
+
+class Truncater:
+    OPTIONS = {
+        'separator': '...',
+        'length': 200,
+    }
+
+    def __init__(self, **options):
+        self.options = {**self.OPTIONS, **options}
+
+    def truncate(self, text, **options):
+        current_options = {**self.options, **options}
+        length = current_options['length']
+        separator = current_options['separator']
+
+        if len(text) > length:
+            return f"{text[:length]}{separator}"
+        return text
