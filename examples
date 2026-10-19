@@ -510,3 +510,33 @@ class Truncater:
         if len(text) > length:
             return f"{text[:length]}{separator}"
         return text
+
+
+
+from urllib.parse import parse_qs, urlparse
+
+
+class Url:
+    def __init__(self, url_string):
+        self._raw_url = url_string
+        self._parsed = urlparse(url_string)
+
+    def get_scheme(self):
+        return self._parsed.scheme
+
+    def get_hostname(self):
+        return self._parsed.hostname
+
+    def get_query_params(self):
+        return parse_qs(self._parsed.query)
+
+    def get_query_param(self, key, default=None):
+        params = self.get_query_params()
+        if key in params:
+            return params[key][0]
+        return default
+
+    def __eq__(self, other):
+        if not isinstance(other, Url):
+            return False
+        return self._raw_url == other._raw_url
