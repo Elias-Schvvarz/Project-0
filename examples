@@ -540,3 +540,22 @@ class Url:
         if not isinstance(other, Url):
             return False
         return self._raw_url == other._raw_url
+
+
+
+from collection import Collection
+
+
+def format(data):
+    c = Collection(data)
+    return (
+        c.map_(lambda item: {
+            'name': item['name'].strip().lower(),
+            'country': item['country'].strip().lower(),
+        })
+        .unique()
+        .sort_by(lambda item: item['name'])
+        .group_by(lambda item: (item['country'], item['name']))
+        .sort_by(lambda item: list(item.keys())[0])
+        .all()
+    )
