@@ -537,3 +537,60 @@ def format(data):
         .sort_by(lambda item: list(item.keys())[0])
         .all()
     )
+
+
+
+class PizzaBuilder:
+    def __init__(self):
+        self._size = None
+        self._dough = None
+        self._sauce = None
+        self._meat_topping = None
+        self._vegetable_topping = None
+        self._cheese_topping = None
+
+    def set_size(self, size):
+        self._size = size
+        return self
+
+    def set_dough(self, dough):
+        self._dough = dough
+        return self
+
+    def set_sauce(self, sauce):
+        self._sauce = sauce
+        return self
+
+    def set_meat_topping(self, meat_topping):
+        self._meat_topping = meat_topping
+        return self
+
+    def set_vegetable_topping(self, vegetable_topping):
+        self._vegetable_topping = vegetable_topping
+        return self
+
+    def set_cheese_topping(self, cheese_topping):
+        self._cheese_topping = cheese_topping
+        return self
+
+    def get_pizza(self):
+        return Pizza(
+            size=self._size,
+            dough=self._dough,
+            sauce=self._sauce,
+            meat_topping=self._meat_topping,
+            vegetable_topping=self._vegetable_topping,
+            cheese_topping=self._cheese_topping,
+        )
+
+
+def create_classic_pizza():
+    return (
+        Pizza.builder()
+        .set_size("big")
+        .set_dough("thin")
+        .set_sauce("tomato")
+        .set_vegetable_topping("basil")
+        .set_cheese_topping("mozzarella")
+        .get_pizza()
+    )
