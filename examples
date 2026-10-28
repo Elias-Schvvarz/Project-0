@@ -18,19 +18,6 @@ enlarge = compose(enlarge_vertically)(enlarge_horizontally)
 
 
 
-from functions import get_function
-
-get = get_function()
-
-if get({'hello': 'world'}, 'hello') != 'world':
-    raise Exception('Функция работает неверно!')
-if get({}, 'hello', 'kitty') != 'kitty':
-    raise Exception('Функция работает неверно!')
-if get({'hello': 'world'}, 'hello', 'kitty') != 'world':
-    raise Exception('Функция работает неверно!')
-
-
-
 from cart import make_cart
 
 
